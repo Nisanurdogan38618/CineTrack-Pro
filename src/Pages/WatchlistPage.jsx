@@ -7,7 +7,8 @@ import { initialDatabase, STORAGE_KEY } from '../Interfaces/constants';
 function WatchlistPage() {
   const [watchlist, setWatchlist] = useState(() => {
     const saved = localStorage.getItem(STORAGE_KEY);
-    return saved ? JSON.parse(saved) : [];
+    if (!saved || saved === "undefined") return []; 
+    return JSON.parse(saved);
   });
 
   const [searchQuery, setSearchQuery] = useState('');
